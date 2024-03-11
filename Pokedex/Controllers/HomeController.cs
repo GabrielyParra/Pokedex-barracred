@@ -35,7 +35,7 @@ public class HomeController : Controller
     public IActionResult Details(int id)
     {
         List<Pokemon> pokemons = new ();
-        using (StreamReader leitor = new("Data\\tipos.json"))
+        using (StreamReader leitor = new("Data\\pokemons.json"))
         {
             string dados = leitor.ReadToEnd();
             pokemons = JsonSerializer.Deserialize<List<Pokemon>>(dados);
@@ -48,8 +48,8 @@ public class HomeController : Controller
         }
         ViewData["Tipos"] = tipos;
         var pokemon = pokemons
-        .Where(p => p.Numero == id)
-        .FirstOrDefault();
+            .Where(p => p.Numero == id)
+            .FirstOrDefault();
         return View(pokemon);
     }
     
