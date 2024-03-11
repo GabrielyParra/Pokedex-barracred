@@ -1,10 +1,10 @@
-@model Pokemon
+@model DetailsVM
 @{
 	ViewData["Title"] = "Pokemon";
 	var tipos = (List<Tipo>)ViewData["Tipos"];
 	string Cor(string nome)
 	{
-		return tipos
+		return Model.Tipos
 		.Where(t => t.Nome == nome)
 		.Select(t => t.Cor)
 		.FirstOrDefault();
